@@ -18,4 +18,4 @@ RUN pip install mysqlclient
 
 EXPOSE 8000
 
-CMD ["bash", "-c", "python manage.py collectstatic --noinput --settings=classpractice.settings.deploy && python manage.py migrate --settings=classpractice.settings.deploy && gunicorn classpractice.wsgi --bind 0.0.0.0:8000"]
+CMD ["bash", "-c", "python manage.py collectstatic --noinput --settings=classpractice.settings.deploy && python manage.py migrate --settings=classpractice.settings.deploy && gunicorn --env DJANGO_SETTINGS_MODULE=classpractice.settings.deploy classpractice.wsgi --bind 0.0.0.0:8000"]
